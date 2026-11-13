@@ -51,6 +51,11 @@
  <div class="control"><button id="toggle" class="toggle" type="button">ВИСУНУТИ СТОЛИК</button></div>
  <p class="hint">Натисни, щоб повністю висунути столик. Повторне натискання сховає його назад. Під час руху відображаються проміжні положення.</p>
 </section>
+<section class="card" id="itemsCard">
+ <div class="cardhead"><div class="section">ПРЕДМЕТИ НА СТОЛИКУ</div><div class="state" id="itemsBadge">0 / 5</div></div>
+ <form id="itemForm" class="items-form"><input id="itemInput" type="text" maxlength="40" placeholder="Назва предмета" autocomplete="off" aria-label="Назва предмета"><button type="submit">ДОДАТИ</button></form>
+ <div id="itemsList" class="items-list" aria-live="polite"></div><div id="itemsCount" class="items-count">Можна додати ще 5 предметів</div>
+</section>
 <section class="card">
  <div class="cardhead"><div class="section">СТАН СИСТЕМИ</div></div>
  <div class="statusrow"><span>Положення</span><strong id="position">0% · схований</strong></div>
