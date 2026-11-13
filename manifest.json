@@ -1,0 +1,17 @@
+{
+  "id": "./",
+  "name": "Continera Dashboard Table",
+  "short_name": "Dashboard Table",
+  "description": "Симулятор висувного столика панелі приладів DAF XG+ 530",
+  "lang": "uk",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#101216",
+  "theme_color": "#17191d",
+  "icons": [
+    {"src":"./icons/icon-192.png","sizes":"192x192","type":"image/png"},
+    {"src":"./icons/icon-512.png","sizes":"512x512","type":"image/png"}
+  ]
+}
