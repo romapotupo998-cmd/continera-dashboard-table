@@ -20,7 +20,7 @@
 .storage:after{content:"";position:absolute;left:43%;right:43%;top:8px;height:3px;border-radius:3px;background:#69717b}
 .table-wrap{position:absolute;z-index:3;left:50%;top:191px;width:min(76%,420px);height:94px;transform:translateX(-50%);pointer-events:none}
 .table{height:100%;width:100%;border-radius:13px;background:linear-gradient(180deg,#59616a 0%,#454c55 16%,#353b43 100%);border:1px solid #737c86;box-shadow:0 11px 18px #0009,inset 0 2px 2px #ffffff24;transform:translateY(-82px) scaleY(.2);transform-origin:top;opacity:0;transition:transform .85s cubic-bezier(.2,.75,.25,1),opacity .3s ease;position:relative}
-.table-items{position:absolute;inset:12px 14px 17px;display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:5px;overflow:hidden}.table-item{max-width:45%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:#252a30d9;border:1px solid #7c858f66;color:#f1f3f5;border-radius:7px;padding:4px 7px;font-size:10px;box-shadow:0 2px 4px #0005}.table:before{content:"";position:absolute;inset:8px;border:1px solid #ffffff12;border-radius:9px}
+.table:before{content:"";position:absolute;inset:8px;border:1px solid #ffffff12;border-radius:9px}
 .table.open{opacity:1;transform:translateY(0) scaleY(1)}
 .table:after{content:"";position:absolute;left:12%;right:12%;bottom:7px;height:3px;border-radius:5px;background:#252a30;opacity:.55}
 .front-edge{position:absolute;bottom:-5px;left:4%;right:4%;height:8px;background:#2a2f36;border-radius:0 0 8px 8px;box-shadow:0 4px 5px #0008}
@@ -28,7 +28,7 @@
 .progress{display:flex;align-items:center;gap:10px;margin:16px 2px 5px}.track{height:5px;background:#353b44;border-radius:9px;flex:1;overflow:hidden}.fill{height:100%;width:0;background:linear-gradient(90deg,#a17d3b,#f0cb75);border-radius:9px;transition:width .85s cubic-bezier(.2,.75,.25,1)}.percent{font-variant-numeric:tabular-nums;color:#d8dee6;font-size:12px;min-width:35px;text-align:right}.stops{display:flex;justify-content:space-between;color:#78828f;font-size:10px;padding:0 1px}
 .control{display:flex;gap:12px;align-items:center}.toggle{width:100%;border:0;border-radius:15px;padding:17px 18px;background:linear-gradient(180deg,#f0cc7c,#c99c48);color:#1b1a16;font-weight:850;font-size:14px;letter-spacing:.08em;box-shadow:0 5px 0 #86652f,0 10px 22px #0005;cursor:pointer;transition:transform .12s,filter .12s}.toggle:active{transform:translateY(3px);box-shadow:0 2px 0 #86652f}.toggle:disabled{filter:grayscale(.5);opacity:.7}.items-form button:disabled{opacity:.45;cursor:not-allowed}
 .hint{color:var(--muted);font-size:12px;line-height:1.5;margin:13px 2px 0}.statusrow{display:flex;justify-content:space-between;gap:12px;padding:12px 2px;border-bottom:1px solid #303640;font-size:13px}.statusrow:last-child{border:0;padding-bottom:2px}.statusrow span:first-child{color:var(--muted)}.statusrow strong{font-weight:650}
-.items-form{display:flex;gap:8px;margin-top:12px}.items-form input{min-width:0;flex:1;background:#11151a;border:1px solid #414954;border-radius:11px;padding:12px;color:var(--text);font:inherit}.items-form button,.remove-item{border:1px solid #505965;background:#303741;color:var(--text);border-radius:10px;padding:10px 12px;font-weight:700;cursor:pointer}.items-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.item-chip{display:flex;align-items:center;gap:8px;background:#303741;border:1px solid #48515d;border-radius:999px;padding:7px 8px 7px 12px;font-size:12px}.remove-item{padding:3px 8px;border-radius:50%;font-size:14px}.items-count{color:var(--muted);font-size:12px;margin-top:8px}.footer{text-align:center;color:#717b87;font-size:11px;margin:18px 0 4px}
+.items-form{display:flex;gap:8px;margin-top:12px}.items-form input{min-width:0;flex:1;background:#11151a;border:1px solid #414954;border-radius:11px;padding:12px;color:var(--text);font:inherit}.items-form button,.remove-item{border:1px solid #505965;background:#303741;color:var(--text);border-radius:10px;padding:10px 12px;font-weight:700;cursor:pointer}.items-list{display:flex;flex-direction:column;gap:7px;margin-top:12px}.item-row{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#252a32;border:1px solid #3b434e;border-radius:11px;padding:10px 11px;font-size:13px}.item-name{min-width:0;overflow-wrap:anywhere}.remove-item{flex:0 0 auto;padding:5px 10px;border-radius:8px;font-size:12px}.items-count{color:var(--muted);font-size:12px;margin-top:8px}.footer{text-align:center;color:#717b87;font-size:11px;margin:18px 0 4px}
 @media(min-width:600px){body{padding-top:28px}.card{padding:20px}.scene{height:330px}.dash{top:122px}.dashline{top:141px}.storage{top:169px}.table-wrap{top:210px;height:105px}.scene-caption{bottom:12px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -40,7 +40,7 @@
  <div class="cardhead"><div class="section">ВИГЛЯД ІНТЕРФЕЙСУ</div><div id="state" class="state">ЗАСУНУТИЙ</div></div>
  <div class="scene" aria-label="Симуляція висувного столика на панелі приладів">
   <div class="windshield"></div><div class="dash"></div><div class="dashline"></div><div class="storage"></div>
-  <div class="table-wrap"><div id="table" class="table"><div id="tableItems" class="table-items"></div><div class="front-edge"></div></div></div>
+  <div class="table-wrap"><div id="table" class="table"><div class="front-edge"></div></div></div>
   <div class="scene-caption">Панель приладів · пасажирська зона</div>
  </div>
  <div class="progress"><div class="track"><div id="fill" class="fill"></div></div><div id="percent" class="percent">0%</div></div>
@@ -60,14 +60,88 @@
 <div class="footer">CONTINERA · DASHBOARD TABLE CONTROL</div>
 </main>
 <script>
-const $=id=>document.getElementById(id);
-const KEY='continera-dashboard-table-state-v1';
-let isOpen=false,animating=false,progress=0,raf=0;
-try{const saved=JSON.parse(localStorage.getItem(KEY)||'null');if(saved&&typeof saved.open==='boolean')isOpen=saved.open;}catch{}
-function saveState(){try{localStorage.setItem(KEY,JSON.stringify({open:isOpen,items}));}catch{}}\nfunction renderItems(){const list=$('itemsList'),onTable=$('tableItems');list.replaceChildren();onTable.replaceChildren();items.forEach((name,index)=>{const chip=document.createElement('span');chip.className='item-chip';const label=document.createElement('span');label.textContent=name;const remove=document.createElement('button');remove.type='button';remove.className='remove-item';remove.textContent='×';remove.setAttribute('aria-label','Прибрати '+name);remove.addEventListener('click',()=>{items.splice(index,1);renderItems();saveState();});chip.append(label,remove);list.append(chip);const onTableChip=document.createElement('span');onTableChip.className='table-item';onTableChip.textContent=name;onTable.append(onTableChip);});$('itemsBadge').textContent=items.length+' / 5';$('itemsCount').textContent=items.length===5?'Ліміт досягнуто — прибери предмет, щоб додати інший':'Можна додати ще '+(5-items.length)+' предмет(ів)';$('itemInput').disabled=items.length>=5;$('itemForm').querySelector('button').disabled=items.length>=5;}\nfunction render(p,save=false){progress=Math.max(0,Math.min(100,p));$('fill').style.width=progress+'%';$('percent').textContent=Math.round(progress)+'%';$('table').classList.toggle('open',progress>0);$('table').style.opacity=String(Math.min(1,progress/18));$('table').style.transform='translateY('+(-82+82*progress/100)+'px) scaleY('+(0.2+0.8*progress/100)+')';$('state').textContent=animating?'РУХАЄТЬСЯ':progress===100?'ВИСУНУТИЙ':'ЗАСУНУТИЙ';$('state').classList.toggle('open',progress>0);$('position').textContent=Math.round(progress)+'% · '+(progress===100?'висунутий':progress===0?'схований':'у русі');$('lock').textContent=animating?'Переміщення':progress===100?'Зафіксований у крайньому положенні':'Зафіксований';$('toggle').textContent=animating?'РУХАЄТЬСЯ…':(isOpen?'ЗАСУНУТИ СТОЛИК':'ВИСУНУТИ СТОЛИК');$('toggle').disabled=animating;if(save)saveState();}
-render(isOpen?100:0);
-$('toggle').addEventListener('click',()=>{if(animating)return;isOpen=!isOpen;animating=true;const start=progress,target=isOpen?100:0,duration=850,t0=performance.now();function step(now){const t=Math.min(1,(now-t0)/duration),ease=1-Math.pow(1-t,3);render(start+(target-start)*ease);if(t<1){raf=requestAnimationFrame(step);}else{animating=false;render(target,true);}}raf=requestAnimationFrame(step);});
-if('serviceWorker' in navigator && location.protocol!=='file:'){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
+const $ = id => document.getElementById(id);
+const KEY = 'continera-dashboard-table-state-v1';
+let isOpen = false, animating = false, progress = 0, items = [];
+try {
+  const saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+  if (saved && typeof saved.open === 'boolean') isOpen = saved.open;
+  if (saved && Array.isArray(saved.items)) items = saved.items.filter(x => typeof x === 'string').slice(0, 5);
+} catch {}
+function saveState() {
+  try { localStorage.setItem(KEY, JSON.stringify({ open: isOpen, items })); } catch {}
+}
+function renderItems() {
+  const list = $('itemsList');
+  list.replaceChildren();
+  items.forEach((name, index) => {
+    const row = document.createElement('div');
+    row.className = 'item-row';
+    const label = document.createElement('span');
+    label.className = 'item-name';
+    label.textContent = name;
+    const remove = document.createElement('button');
+    remove.type = 'button';
+    remove.className = 'remove-item';
+    remove.textContent = 'ПРИБРАТИ';
+    remove.addEventListener('click', () => {
+      items.splice(index, 1);
+      renderItems();
+      saveState();
+    });
+    row.append(label, remove);
+    list.append(row);
+  });
+  $('itemsBadge').textContent = items.length + ' / 5';
+  $('itemsCount').textContent = items.length === 5
+    ? 'Ліміт досягнуто — прибери предмет, щоб додати інший'
+    : 'Можна додати ще ' + (5 - items.length) + ' предмет(ів)';
+  $('itemInput').disabled = items.length >= 5;
+  $('itemForm').querySelector('button').disabled = items.length >= 5;
+}
+function render(p, save = false) {
+  progress = Math.max(0, Math.min(100, p));
+  $('fill').style.width = progress + '%';
+  $('percent').textContent = Math.round(progress) + '%';
+  $('table').classList.toggle('open', progress > 0);
+  $('table').style.opacity = String(Math.min(1, progress / 18));
+  $('table').style.transform = 'translateY(' + (-82 + 82 * progress / 100) + 'px) scaleY(' + (0.2 + 0.8 * progress / 100) + ')';
+  $('state').textContent = animating ? 'РУХАЄТЬСЯ' : progress === 100 ? 'ВИСУНУТИЙ' : 'ЗАСУНУТИЙ';
+  $('state').classList.toggle('open', progress > 0);
+  $('position').textContent = Math.round(progress) + '% · ' + (progress === 100 ? 'висунутий' : progress === 0 ? 'схований' : 'у русі');
+  $('lock').textContent = animating ? 'Переміщення' : progress === 100 ? 'Зафіксований у крайньому положенні' : 'Зафіксований';
+  $('toggle').textContent = animating ? 'РУХАЄТЬСЯ…' : isOpen ? 'ЗАСУНУТИ СТОЛИК' : 'ВИСУНУТИ СТОЛИК';
+  $('toggle').disabled = animating;
+  if (save) saveState();
+}
+render(isOpen ? 100 : 0);
+renderItems();
+$('itemForm').addEventListener('submit', event => {
+  event.preventDefault();
+  const input = $('itemInput');
+  const name = input.value.trim();
+  if (!name || items.length >= 5) return;
+  items.push(name);
+  input.value = '';
+  renderItems();
+  saveState();
+});
+$('toggle').addEventListener('click', () => {
+  if (animating) return;
+  isOpen = !isOpen;
+  animating = true;
+  const start = progress, target = isOpen ? 100 : 0, duration = 850, started = performance.now();
+  function step(now) {
+    const t = Math.min(1, (now - started) / duration);
+    render(start + (target - start) * (1 - Math.pow(1 - t, 3)));
+    if (t < 1) requestAnimationFrame(step);
+    else { animating = false; render(target, true); }
+  }
+  requestAnimationFrame(step);
+});
+if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+}
 </script>
 </body>
 </html>
