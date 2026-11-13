@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#17191d">
+<title>Continera Dashboard Table</title>
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icons/icon-192.png">
+<style>
+:root{color-scheme:dark;--bg:#101216;--panel:#1b1f25;--panel2:#252a32;--line:#353c46;--muted:#9ca5b1;--text:#f1f3f5;--accent:#e2b85c;--table:#454b53}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% -20%,#303640 0,#171a20 45%,var(--bg) 80%);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--text);padding:18px 14px calc(26px + env(safe-area-inset-bottom))}
+.app{max-width:760px;margin:auto}.top{display:flex;align-items:center;gap:13px;margin:4px 2px 20px}.logo{width:46px;height:46px;object-fit:contain;border-radius:13px;background:#252a31}.eyebrow{font-size:11px;letter-spacing:.16em;color:var(--muted);font-weight:700}.title{font-size:clamp(20px,5vw,27px);font-weight:750;letter-spacing:-.04em;margin-top:3px}.sub{color:var(--muted);font-size:13px;margin-top:3px}
+.card{background:linear-gradient(145deg,#20252c,#171b20);border:1px solid var(--line);border-radius:22px;padding:17px;box-shadow:0 18px 50px #0005;margin-bottom:14px}.cardhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.section{font-size:12px;letter-spacing:.12em;color:#b6bec8;font-weight:750}.state{font-size:11px;font-weight:800;letter-spacing:.08em;padding:7px 10px;border-radius:999px;background:#303640;color:#c5ccd5}.state.open{background:#3c3422;color:#f0cd7b}
+.scene{height:290px;position:relative;overflow:hidden;border-radius:16px;background:linear-gradient(180deg,#171b21,#222831 57%,#12151a);border:1px solid #343b45;perspective:850px}
+.windshield{position:absolute;left:8%;right:8%;top:14px;height:100px;border:2px solid #414b58;border-bottom:0;border-radius:50% 50% 8px 8px/40% 40% 8px 8px;background:linear-gradient(145deg,#25313b,#141b23);opacity:.75}
+.dash{position:absolute;left:-4%;right:-4%;top:105px;height:112px;border-radius:45% 45% 14px 14px/28% 28% 14px 14px;background:linear-gradient(180deg,#343a43,#20252c 68%,#14181d);border:1px solid #4a515b;box-shadow:0 12px 22px #0008}
+.dashline{position:absolute;left:8%;right:8%;top:124px;height:3px;background:#59616c;border-radius:4px;opacity:.6}
+.storage{position:absolute;top:150px;left:50%;transform:translateX(-50%);width:min(76%,420px);height:72px;background:linear-gradient(180deg,#14181e,#0e1115);border:2px solid #515965;border-radius:9px 9px 13px 13px;box-shadow:inset 0 4px 8px #0009,0 8px 14px #0007;z-index:2}
+.storage:after{content:"";position:absolute;left:43%;right:43%;top:8px;height:3px;border-radius:3px;background:#69717b}
+.table-wrap{position:absolute;z-index:3;left:50%;top:191px;width:min(76%,420px);height:94px;transform:translateX(-50%);pointer-events:none}
+.table{height:100%;width:100%;border-radius:13px;background:linear-gradient(180deg,#59616a 0%,#454c55 16%,#353b43 100%);border:1px solid #737c86;box-shadow:0 11px 18px #0009,inset 0 2px 2px #ffffff24;transform:translateY(-82px) scaleY(.2);transform-origin:top;opacity:0;transition:transform .85s cubic-bezier(.2,.75,.25,1),opacity .3s ease;position:relative}
+.table:before{content:"";position:absolute;inset:8px;border:1px solid #ffffff12;border-radius:9px}
+.table.open{opacity:1;transform:translateY(0) scaleY(1)}
+.table:after{content:"";position:absolute;left:12%;right:12%;bottom:7px;height:3px;border-radius:5px;background:#252a30;opacity:.55}
+.front-edge{position:absolute;bottom:-5px;left:4%;right:4%;height:8px;background:#2a2f36;border-radius:0 0 8px 8px;box-shadow:0 4px 5px #0008}
+.scene-caption{position:absolute;bottom:9px;left:0;right:0;text-align:center;color:#aeb7c2;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.progress{display:flex;align-items:center;gap:10px;margin:16px 2px 5px}.track{height:5px;background:#353b44;border-radius:9px;flex:1;overflow:hidden}.fill{height:100%;width:0;background:linear-gradient(90deg,#a17d3b,#f0cb75);border-radius:9px;transition:width .85s cubic-bezier(.2,.75,.25,1)}.percent{font-variant-numeric:tabular-nums;color:#d8dee6;font-size:12px;min-width:35px;text-align:right}.stops{display:flex;justify-content:space-between;color:#78828f;font-size:10px;padding:0 1px}
+.control{display:flex;gap:12px;align-items:center}.toggle{width:100%;border:0;border-radius:15px;padding:17px 18px;background:linear-gradient(180deg,#f0cc7c,#c99c48);color:#1b1a16;font-weight:850;font-size:14px;letter-spacing:.08em;box-shadow:0 5px 0 #86652f,0 10px 22px #0005;cursor:pointer;transition:transform .12s,filter .12s}.toggle:active{transform:translateY(3px);box-shadow:0 2px 0 #86652f}.toggle:disabled{filter:grayscale(.5);opacity:.7}
+.hint{color:var(--muted);font-size:12px;line-height:1.5;margin:13px 2px 0}.statusrow{display:flex;justify-content:space-between;gap:12px;padding:12px 2px;border-bottom:1px solid #303640;font-size:13px}.statusrow:last-child{border:0;padding-bottom:2px}.statusrow span:first-child{color:var(--muted)}.statusrow strong{font-weight:650}
+.footer{text-align:center;color:#717b87;font-size:11px;margin:18px 0 4px}
+@media(min-width:600px){body{padding-top:28px}.card{padding:20px}.scene{height:330px}.dash{top:122px}.dashline{top:141px}.storage{top:169px}.table-wrap{top:210px;height:105px}.scene-caption{bottom:12px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main class="app">
+<header class="top"><img class="logo" src="./icons/icon-192.png" alt=""><div><div class="eyebrow">CONTINERA INSTRUMENTS</div><div class="title">Dashboard Table</div><div class="sub">DAF XG+ 530 · висувний столик</div></div></header>
+<section class="card">
+ <div class="cardhead"><div class="section">ВИГЛЯД ІНТЕРФЕЙСУ</div><div id="state" class="state">ЗАСУНУТИЙ</div></div>
+ <div class="scene" aria-label="Симуляція висувного столика на панелі приладів">
+  <div class="windshield"></div><div class="dash"></div><div class="dashline"></div><div class="storage"></div>
+  <div class="table-wrap"><div id="table" class="table"><div class="front-edge"></div></div></div>
+  <div class="scene-caption">Панель приладів · пасажирська зона</div>
+ </div>
+ <div class="progress"><div class="track"><div id="fill" class="fill"></div></div><div id="percent" class="percent">0%</div></div>
+ <div class="stops"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div>
+</section>
+<section class="card">
+ <div class="cardhead"><div class="section">КЕРУВАННЯ</div><div class="section">ОДНА КНОПКА</div></div>
+ <div class="control"><button id="toggle" class="toggle" type="button">ВИСУНУТИ СТОЛИК</button></div>
+ <p class="hint">Натисни, щоб повністю висунути столик. Повторне натискання сховає його назад. Під час руху відображаються проміжні положення.</p>
+</section>
+<section class="card">
+ <div class="cardhead"><div class="section">СТАН СИСТЕМИ</div></div>
+ <div class="statusrow"><span>Положення</span><strong id="position">0% · схований</strong></div>
+ <div class="statusrow"><span>Поверхня</span><strong>Темно-сіра, рівна</strong></div>
+ <div class="statusrow"><span>Фіксація</span><strong id="lock">Зафіксований</strong></div>
+</section>
+<div class="footer">CONTINERA · DASHBOARD TABLE CONTROL</div>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const KEY='continera-dashboard-table-state-v1';
+let isOpen=false,animating=false,progress=0,raf=0;
+try{const saved=JSON.parse(localStorage.getItem(KEY)||'null');if(saved&&typeof saved.open==='boolean')isOpen=saved.open;}catch{}
+function render(p,save=false){progress=Math.max(0,Math.min(100,p));$('fill').style.width=progress+'%';$('percent').textContent=Math.round(progress)+'%';$('table').classList.toggle('open',progress>0);$('table').style.opacity=String(Math.min(1,progress/18));$('table').style.transform='translateY('+(-82+82*progress/100)+'px) scaleY('+(0.2+0.8*progress/100)+')';$('state').textContent=animating?'РУХАЄТЬСЯ':progress===100?'ВИСУНУТИЙ':'ЗАСУНУТИЙ';$('state').classList.toggle('open',progress>0);$('position').textContent=Math.round(progress)+'% · '+(progress===100?'висунутий':progress===0?'схований':'у русі');$('lock').textContent=animating?'Переміщення':progress===100?'Зафіксований у крайньому положенні':'Зафіксований';$('toggle').textContent=animating?'РУХАЄТЬСЯ…':(isOpen?'ЗАСУНУТИ СТОЛИК':'ВИСУНУТИ СТОЛИК');$('toggle').disabled=animating;if(save){try{localStorage.setItem(KEY,JSON.stringify({open:isOpen}));}catch{}}}
+render(isOpen?100:0);
+$('toggle').addEventListener('click',()=>{if(animating)return;isOpen=!isOpen;animating=true;const start=progress,target=isOpen?100:0,duration=850,t0=performance.now();function step(now){const t=Math.min(1,(now-t0)/duration),ease=1-Math.pow(1-t,3);render(start+(target-start)*ease);if(t<1){raf=requestAnimationFrame(step);}else{animating=false;render(target,true);}}raf=requestAnimationFrame(step);});
+if('serviceWorker' in navigator && location.protocol!=='file:'){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
+</script>
+</body>
+</html>
